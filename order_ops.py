@@ -27,7 +27,7 @@ def add_item(order_id, product_name, quantity, price):
 def checkout(username, address, items): 
     # Generate order ID. In real life, there are better
     # ways of doing this
-    order_id = hashlib.sha256(str(random.random()).encode()).hexdigest()[:random.randrange(20)]
+    order_id = hashlib.sha256(str(random.random()).encode()).hexdigest()[:random.randrange(1, 20)]
     
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('users-orders-items')
