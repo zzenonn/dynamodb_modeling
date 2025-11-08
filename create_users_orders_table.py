@@ -21,8 +21,6 @@ def create_invertible_table(
     key_schema = [{'AttributeName': partition_key, 'KeyType': 'HASH'}, 
                   {'AttributeName': sort_key, 'KeyType': 'RANGE'}]
                   
-    provisioned_throughput = {'ReadCapacityUnits': 5, 'WriteCapacityUnits': 10}
-    
     global_secondary_indexes = [{
             'IndexName': 'inverted-index',
             'KeySchema': [
@@ -30,8 +28,7 @@ def create_invertible_table(
                 {'AttributeName': partition_key, 'KeyType': 'RANGE'}],
             'Projection': {'ProjectionType': 'INCLUDE',
                            'NonKeyAttributes': ['quantity',	'price', 'status', 'product_name']
-            },
-            'ProvisionedThroughput': {'ReadCapacityUnits': 5, 'WriteCapacityUnits': 10}
+            }
     }]
     
     try:
@@ -39,7 +36,7 @@ def create_invertible_table(
         table = dynamodb.create_table(TableName=table_name,
                                       KeySchema=key_schema,
                                       AttributeDefinitions=attribute_definitions,
-                                      ProvisionedThroughput=provisioned_throughput,
+                                      BillingMode='PAY_PER_REQUEST',
                                       GlobalSecondaryIndexes=global_secondary_indexes
                                       )
         return table

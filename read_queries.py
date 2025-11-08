@@ -4,7 +4,7 @@ from decimal import Decimal
 
 if __name__ == '__main__':
     
-    print(user.query_user_profile("tgrimes1"))
+    # print(user.query_user_profile("tgrimes1"))
     
     orders = order_ops.query_user_orders("tgrimes1")
 
