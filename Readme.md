@@ -19,3 +19,7 @@ To close the environment when you're done, run `deactivate`
 3. The `order_ops.py` file contains the functions related to orders.
 4. Run the `populate.py` file will add records to the table
 5. The `read_queries.py` will call the read functions from the other files
+
+## Two-table redesign (Module 11)
+
+The `two_table_design/` folder splits this table into `UserOrders` and `OrderItems`. See `two_table_design/README.md`.
